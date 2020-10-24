@@ -1,3 +1,7 @@
 #!/usr/bin/env ruby
 
+<<<<<<< HEAD
 require_relative '../environment.rb'
+=======
+require_relative '../environment.rb'
+>>>>>>> first commit
