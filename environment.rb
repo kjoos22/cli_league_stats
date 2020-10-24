@@ -5,4 +5,5 @@ require_relative './lib/summoner.rb'
 require 'pry'
 require 'net/http'
 require 'json'
-require 'dotenv/load'
+require 'dotenv'
+Dotenv.load('./.env')
