@@ -18,13 +18,13 @@ class API
         print "Enter a summoner name: "
         summoner = gets().gsub(' ', '%20').chomp
 
-        url = "https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-name"+
-        "/#{summoner}?api_key=#{ENV['API_KEY']}"
+        url = "https://#{@@region}.api.riotgames.com/lol/summoner/v4/summoners"+
+        "/by-name/#{summoner}?api_key=#{ENV['API_KEY']}"
         
         response = JSON.parse(Net::HTTP.get(URI(url)))
         accountID = response['accountId']
 
-        url = "https://na1.api.riotgames.com/lol/match/v4/matchlists/"+
+        url = "https://#{@@region}.api.riotgames.com/lol/match/v4/matchlists/"+
         "by-account/#{accountID}?api_key=#{ENV['API_KEY']}"
     end
 
