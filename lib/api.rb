@@ -22,10 +22,14 @@ class API
         "/by-name/#{summoner}?api_key=#{ENV['API_KEY']}"
         
         response = JSON.parse(Net::HTTP.get(URI(url)))
+        #binding.pry
+        summoner_valid?(response)
         accountID = response['accountId']
 
         url = "https://#{@@region}.api.riotgames.com/lol/match/v4/matchlists/"+
         "by-account/#{accountID}?api_key=#{ENV['API_KEY']}"
+
+        response = JSON.parse(Net::HTTP.get(URI(url)))
     end
 
     def self.set_region(region)        
@@ -44,6 +48,14 @@ class API
         region = gets().chomp
         set_region(region)
     end
+
+    def self.summoner_valid?(response)
+        if response['status']['status_code'] == 404
+            puts 'Summoner not found.'
+        end
+        retrieve_summoner
+    end
+
 
     
 
