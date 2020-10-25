@@ -50,10 +50,14 @@ class API
     end
 
     def self.summoner_valid?(response)
-        if response['status']['status_code'] == 404
-            puts 'Summoner not found.'
+        #error = response['status']['status code']
+        if response['status']
+            if response['status']['status_code'] == 404
+                puts 'Summoner not found.'
+            end
+            retrieve_summoner
         end
-        retrieve_summoner
+    
     end
 
 
