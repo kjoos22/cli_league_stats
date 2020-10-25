@@ -10,7 +10,6 @@ class API
         url = "https://na1.api.riotgames.com/lol/match/v4/matchlists/"+
         "by-account/#{accountID}?api_key=#{ENV['API_KEY']}"
         
-        puts response
         
     end
 
