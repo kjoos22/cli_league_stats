@@ -13,8 +13,11 @@ class API
                 }
     @@region
 
-    def self.retrieve_summoner(summoner)
+    def self.retrieve_summoner
         select_region
+        print "Enter a summoner name: "
+        summoner = gets().gsub(' ', '%20').chomp
+
         url = "https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-name"+
         "/#{summoner}?api_key=#{ENV['API_KEY']}"
         
@@ -23,8 +26,6 @@ class API
 
         url = "https://na1.api.riotgames.com/lol/match/v4/matchlists/"+
         "by-account/#{accountID}?api_key=#{ENV['API_KEY']}"
-        
-        
     end
 
     def self.set_region(region)        
@@ -33,7 +34,6 @@ class API
             select_region
         end
         @@region = @@regions[region]
-        puts @@region
     end
 
     def self.select_region
