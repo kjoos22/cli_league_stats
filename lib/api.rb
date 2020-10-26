@@ -52,8 +52,29 @@ class API
     def self.summoner_valid?(response)
         #error = response['status']['status code']
         if response['status']
-            if response['status']['status_code'] == 404
-                puts 'Summoner not found.'
+            case response['status']['status_code']
+                when 400
+                    puts 'Bad request.'
+                when 401
+                    puts 'Unauthorized.'
+                when 403
+                    puts 'Forbidden, check API key.'
+                when 404
+                    puts 'Summoner not found.'
+                when 405
+                    puts 'Method not allowed.'
+                when 415
+                    puts 'Unsupported media type.'
+                when 429
+                    puts 'Rate limit exceeded, try again later.'
+                when 500
+                    puts 'Internal server error.'
+                when 502
+                    puts 'Bad gateway.'
+                when 504
+                    puts 'Service unavailable, try again later.'
+                when 504
+                    puts 'Gateway timeout'
             end
             retrieve_summoner
         end
