@@ -1,16 +1,4 @@
 class API
-    @@regions = {'1' => 'br1',
-                 '2' => 'eun1',
-                 '3' => 'euw1',
-                 '4' => 'jp1',
-                 '5' => 'kr',
-                 '6' => 'la1',
-                 '7' => 'la2',
-                 '8' => 'na1',
-                 '9' => 'oc1',
-                 '10' => 'tr1',
-                 '11' => 'ru'
-                }
     @@region
 
     def self.retrieve_summoner
@@ -32,11 +20,11 @@ class API
     end
 
     def self.set_region(region)        
-        if !@@regions.keys.include?(region)
+        if !$regions.keys.include?(region)
             puts "Invalid selection, try again."
             select_region
         end
-        @@region = @@regions[region]
+        @@region = $regions[region]
     end
 
     def self.select_region

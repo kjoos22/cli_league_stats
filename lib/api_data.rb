@@ -9,7 +9,20 @@ $error_codes = {400 => 'Bad request.',
                 502 => 'Bad gateway.',
                 503 => 'Service unavailable, try again later.',
                 504 => 'Gateway timeout'                
-               }
+                }
+
+$regions = {'1' => 'br1',
+            '2' => 'eun1',
+            '3' => 'euw1',
+            '4' => 'jp1',
+            '5' => 'kr',
+            '6' => 'la1',
+            '7' => 'la2',
+            '8' => 'na1',
+            '9' => 'oc1',
+            '10' => 'tr1',
+            '11' => 'ru'
+            }
 
 
 
