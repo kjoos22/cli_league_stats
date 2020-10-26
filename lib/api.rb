@@ -17,6 +17,7 @@ class API
         "by-account/#{accountID}?api_key=#{ENV['API_KEY']}"
 
         response = JSON.parse(Net::HTTP.get(URI(url)))
+        Summoner.new(summoner.gsub('%20', ' '), response)
     end
 
     def self.set_region(region)        

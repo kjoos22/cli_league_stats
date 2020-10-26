@@ -24,5 +24,16 @@ $regions = {'1' => 'br1',
             '11' => 'ru'
             }
 
+$queue_id = {400 => 'Draft Pick',
+             420 => 'Solo/Duo Queue',
+             430 => 'Blind Pick',
+             440 => 'Flex Queue',
+             450 => 'ARAM',
+             700 => 'Clash',
+             830 => 'Co-op vs AI - Intro',
+             840 => 'Co-op vs AI - Beginner',
+             850 => 'Co-op vs AI - Intermediate'
+             }
+
 
 
