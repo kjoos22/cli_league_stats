@@ -23,7 +23,7 @@ class Summoner
             end
         end
         @matches = []
-        binding.pry
+        CLI.summoner_matches(self)
     end
 
 end

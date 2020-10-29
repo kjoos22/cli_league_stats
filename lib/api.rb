@@ -4,7 +4,7 @@ class API
     def self.retrieve_summoner
         select_region
         print "Enter a summoner name: "
-        summoner = gets().gsub(' ', '%20').chomp
+        summoner = CLI.get_input.gsub(' ', '%20')
 
         url = "https://#{@@region}.api.riotgames.com/lol/summoner/v4/summoners"+
         "/by-name/#{summoner}?api_key=#{ENV['API_KEY']}"
