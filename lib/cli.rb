@@ -1,7 +1,7 @@
 class CLI
 
     def start
-        puts "Welcome to CLI_League_Stats!"   
+        puts "Welcome to CLI_League_Stats!" 
         API.retrieve_summoner
     end
 
@@ -23,8 +23,10 @@ class CLI
     end
 
     def self.show_matches(queue, summoner)
+        x = 1
         summoner.sorted_matches[queue].each do |match|
-            puts match.date_time.strftime('%b %d %Y %H:%M') + "#{match.champion}"
+            puts match.date_time.strftime('%b %d %Y %H:%M') +
+            " Champion Played: #{$champions[match.champion]}"
         end
     end
 
