@@ -33,7 +33,7 @@ class API
         "5. Korea\n6. Latin America North\n7. Latin America South\n8. North "+
         "America\n9. Oceania\n10. Turkey\n11. Russia"
         print "Enter a region #: "
-        region = gets().chomp
+        region = CLI.get_input
         set_region(region)
     end
 
