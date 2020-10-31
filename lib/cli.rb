@@ -10,6 +10,7 @@ class CLI
     def self.get_input
         input = gets.chomp
         if input == 'EXIT!'
+            puts "\nThank you for using CLI_League_Stats!"
             exit
         end
         input
@@ -31,7 +32,6 @@ class CLI
     end
 
     def self.summoner_matches(summoner)
-        system('clear')
         puts "#{summoner.name} has played matches in the following queues:\n\n"
         x = 1
         summoner.sorted_matches.keys.sort.each do |queue|
@@ -47,11 +47,11 @@ class CLI
             summoner_matches(summoner)
         end
         queue = summoner.sorted_matches.keys.sort[input]
+        system('clear')
         show_matches(queue, summoner)
     end
 
     def self.show_matches(queue, summoner)
-        system('clear')
         x = 1
         puts "#{summoner.name}'s #{queue} matches:\n\n"
         summoner.sorted_matches[queue].each do |match|
@@ -60,7 +60,14 @@ class CLI
             x += 1
         end
         print "\nEnter a match # to see stats: " 
-        match = summoner.sorted_matches[queue][CLI.get_input.to_i - 1]
+        input = CLI.get_input.to_i - 1
+        if input < 0 or input > summoner.sorted_matches[queue].length - 1
+            system('clear')
+            puts "Enter 'EXIT!' at anytime to quit."
+            puts "Invalid match #, try again."
+            show_matches(queue, summoner)
+        end
+        match = summoner.sorted_matches[queue][input]
         API.get_match_details(match)
     end
 
@@ -78,7 +85,32 @@ class CLI
         puts "Vision Score: #{match.vision_score}\n\n"
         print "Press Enter to contine..."
         CLI.get_input
+        system('clear')
+        CLI.options(match)
     end
 
+    def self.options(match)
+        puts "Options: \n\n"
+        puts "1. Enter a new summoner"
+        puts "2. Return to #{match.summoner.name}'s match history"
+        puts "3. Exit"
+        print "\nEnter an option: "
+        input = CLI.get_input.to_i
+        case input
+            when 1
+                system('clear')
+                API.retrieve_summoner
+            when 2
+                system('clear')
+                summoner_matches(match.summoner)
+            when 3
+                puts "\nThank you for using CLI_League_Stats"
+                exit
+            else
+                system('clear')
+                puts "Invalid selection, try again."
+                options(match)
+        end
+    end
 
 end

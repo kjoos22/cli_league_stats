@@ -23,7 +23,9 @@ class Summoner
                 @sorted_matches[match.queue] << match
             end
         end
+        @sorted_matches.delete(nil)
         @matches = []
+        system('clear')
         CLI.summoner_matches(self)
     end
 
