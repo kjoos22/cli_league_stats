@@ -42,4 +42,4 @@ Pull requests are welcome. To propose substantial changes please open an issue.
 5. Insights derived from statistics to suggest areas of improvement.
 
 ## License
-
+https://github.com/kjoos22/cli_league_stats/blob/main/LICENSE.txt
