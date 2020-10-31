@@ -8,3 +8,7 @@ To install the program, run the following command in your terminal:
 ```bash
 git clone git@github.com:kjoos22/cli_league_stats.git
 ```
+### API Key
+The program requires an API key, which can be obtained for free at http://developer.riotgames.com
+
+The program is configured to make use of https://github.com/bkeepers/dotenv and stores the API key in the .env file with the variable name API_KEY
