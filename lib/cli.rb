@@ -32,4 +32,17 @@ class CLI
         API.get_match_details(match)
     end
 
+    def self.show_match_details(match)
+        puts "#{match.summoner.name}'s stats for #{$champions[match.champion]}"+
+        " on #{match.date_time.strftime('%b %d %Y %H:%M')}"
+        puts "Result: #{match.result}"
+        puts "Kills: #{match.kills}"
+        puts "Assits: #{match.assists}"
+        puts "Deaths: #{match.deaths}"
+        puts "KDA: #{match.kda}"
+        puts "CS: #{match.cs}"
+        puts "Gold: #{match.gold}"
+        puts "Vision Score: #{match.vision_score}"
+    end
+
 end

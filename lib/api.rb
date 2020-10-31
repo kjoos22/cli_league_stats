@@ -38,7 +38,6 @@ class API
     end
 
     def self.summoner_valid?(response)
-        #error = response['status']['status code']
         if response['status']
             puts $error_codes[response['status']['status_code']]
             retrieve_summoner
@@ -55,6 +54,7 @@ class API
         match.set_participantID(response)
         match.determine_result(response)
         match.set_stats(response)
+        CLI.show_match_details(match)
     end
 
 
