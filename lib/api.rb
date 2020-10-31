@@ -2,7 +2,7 @@ class API
     @@region
 
     def self.retrieve_summoner
-        select_region
+        CLI.select_region
         print "Enter a summoner name: "
         summoner = CLI.get_input.gsub(' ', '%20')
 
@@ -23,18 +23,9 @@ class API
     def self.set_region(region)        
         if !$regions.keys.include?(region)
             puts "Invalid selection, try again."
-            select_region
+            CLI.select_region
         end
         @@region = $regions[region]
-    end
-
-    def self.select_region
-        puts "1. Brazil\n2. Europe Northeast\n3. Europe Northwest\n4. Japan\n"+
-        "5. Korea\n6. Latin America North\n7. Latin America South\n8. North "+
-        "America\n9. Oceania\n10. Turkey\n11. Russia"
-        print "Enter a region #: "
-        region = CLI.get_input
-        set_region(region)
     end
 
     def self.summoner_valid?(response)
