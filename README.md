@@ -7,4 +7,4 @@ To install the program, run the following command in your terminal:
 
 ```bash
 git clone git@github.com:kjoos22/cli_league_stats.git
-```bash
+```
