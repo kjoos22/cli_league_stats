@@ -54,7 +54,7 @@ class API
         
         match.set_participantID(response)
         match.determine_result(response)
-        binding.pry
+        match.set_stats(response)
     end
 
 
