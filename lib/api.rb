@@ -52,13 +52,9 @@ class API
 
         response = JSON.parse(Net::HTTP.get(URI(url)))
         
-        response['participantIdentities'].each do |participant|
-            if participant['player']['accountId'] == match.summoner.accountID
-                match.participantID = participant['participantId']
-            end
-        end
+        match.set_participantID(response)
+        match.determine_result(response)
         binding.pry
-        match.result = response[]
     end
 
 
