@@ -21,6 +21,7 @@ class API
 
     def self.set_region(region)        
         if !$regions.keys.include?(region)
+            system('clear')
             puts "Invalid selection, try again."
             CLI.select_region
         end
@@ -29,6 +30,7 @@ class API
 
     def self.summoner_valid?(response)
         if response['status']
+            system('clear')
             puts $error_codes[response['status']['status_code']]
             retrieve_summoner
         end

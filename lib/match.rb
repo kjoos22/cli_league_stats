@@ -32,7 +32,7 @@ class Match
         @kills = stats['kills']
         @deaths = stats['deaths']
         @assists = stats['assists']
-        @kda = (@kills + @assists) / @deaths
+        @kda = ((@kills.to_f + @assists.to_f) / @deaths.to_f).round(2)
         @vision_score = stats['visionScore']
         @gold = stats['goldEarned']
         @cs = stats['totalMinionsKilled']
