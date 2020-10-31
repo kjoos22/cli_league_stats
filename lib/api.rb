@@ -3,8 +3,7 @@ class API
 
     def self.retrieve_summoner
         CLI.select_region
-        print "Enter a summoner name: "
-        summoner = CLI.get_input.gsub(' ', '%20')
+        summoner = CLI.set_summoner
 
         url = "https://#{@@region}.api.riotgames.com/lol/summoner/v4/summoners"+
         "/by-name/#{summoner}?api_key=#{ENV['API_KEY']}"
@@ -33,7 +32,6 @@ class API
             puts $error_codes[response['status']['status_code']]
             retrieve_summoner
         end
-    
     end
 
     def self.get_match_details(match)
@@ -46,9 +44,6 @@ class API
         match.determine_result(response)
         match.set_stats(response)
         CLI.show_match_details(match)
-    end
-
-
-    
+    end    
 
 end

@@ -1,12 +1,17 @@
 class CLI
 
     def start
-        puts "Welcome to CLI_League_Stats!" 
+        puts "Welcome to CLI_League_Stats!"
+        puts "Enter 'EXIT!' at anytime to quit."
         API.retrieve_summoner
     end
 
     def self.get_input
-        gets.chomp
+        input = gets.chomp
+        if input == 'EXIT!'
+            exit
+        end
+        input
     end
 
     def self.select_region
@@ -16,6 +21,11 @@ class CLI
         print "Enter a region #: "
         region = CLI.get_input
         API.set_region(region)
+    end
+
+    def self.set_summoner
+        print "Enter a summoner name: "
+        summoner = CLI.get_input.gsub(' ', '%20')
     end
 
     def self.summoner_matches(summoner)
@@ -53,5 +63,6 @@ class CLI
         puts "Gold: #{match.gold}"
         puts "Vision Score: #{match.vision_score}"
     end
+
 
 end
