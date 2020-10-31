@@ -1,6 +1,6 @@
 class Match
     attr_accessor :matchid, :champion, :result, :queue, :date_time,
-                  :summoner
+                  :summoner, :participantID
 
     def initialize(summoner, matchid, champion, queue, date_time)
         @summoner = summoner

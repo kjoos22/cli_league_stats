@@ -17,7 +17,7 @@ class API
         "by-account/#{accountID}?api_key=#{ENV['API_KEY']}"
 
         response = JSON.parse(Net::HTTP.get(URI(url)))
-        Summoner.new(summoner.gsub('%20', ' '), response)
+        Summoner.new(summoner.gsub('%20', ' '), response, accountID)
     end
 
     def self.set_region(region)        
@@ -44,6 +44,21 @@ class API
             retrieve_summoner
         end
     
+    end
+
+    def self.get_match_details(match)
+        url = "https://na1.api.riotgames.com/lol/match/v4/matches/" +
+        "#{match.matchid}?api_key=#{ENV['API_KEY']}"
+
+        response = JSON.parse(Net::HTTP.get(URI(url)))
+        
+        response['participantIdentities'].each do |participant|
+            if participant['player']['accountId'] == match.summoner.accountID
+                match.participantID = participant['participantId']
+            end
+        end
+        binding.pry
+        match.result = response[]
     end
 
 

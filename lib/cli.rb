@@ -17,17 +17,19 @@ class CLI
             x += 1
         end
         print "Enter a queue # to see matches: "
-        input = CLI.get_input.to_i - 1
-        queue = summoner.sorted_matches.keys.sort[input]
+        queue = summoner.sorted_matches.keys.sort[CLI.get_input.to_i - 1]
         show_matches(queue, summoner)
     end
 
     def self.show_matches(queue, summoner)
         x = 1
         summoner.sorted_matches[queue].each do |match|
-            puts match.date_time.strftime('%b %d %Y %H:%M') +
+            puts "#{x}"+". " + "#{match.date_time.strftime('%b %d %Y %H:%M')}" +
             " Champion Played: #{$champions[match.champion]}"
+            x += 1
         end
+        match = summoner.sorted_matches[queue][CLI.get_input.to_i - 1]
+        API.get_match_details(match)
     end
 
 end

@@ -1,9 +1,10 @@
 class Summoner
-    attr_accessor :name, :matches, :sorted_matches
+    attr_accessor :name, :matches, :sorted_matches, :accountID
 
-    def initialize(name, match_history)
+    def initialize(name, match_history, accountID)
         @name = name
         @matches = []
+        @accountID = accountID
         @sorted_matches = {}
         match_history['matches'].each do |match|          
             @matches << Match.new(self, match['gameId'], match['champion'],
