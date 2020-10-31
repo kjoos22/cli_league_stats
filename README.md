@@ -19,3 +19,14 @@ Once installed and configured with an API key, navigate to the appropriate direc
 ```bash
 ruby bin/run
 ```
+
+## Usage
+Upon launching the program the user will be welcomed then enter the following flow:
+
+1. Select region
+2. Enter summoner
+3. Select queue
+4. Select match
+5. Enter new summoner (returns to 1.), return to match history (returns to 3.), or exit.
+
+Users can enter 'EXIT!' anytime the program prompts for input to immediately exit
