@@ -18,8 +18,8 @@ class CLI
 
     def self.select_region
         puts "\n1. Brazil\n2. Europe Northeast\n3. Europe Northwest\n4. Japan\n"+
-        "5. Korea\n6. Latin America North\n7. Latin America South\n8. North "+
-        "America\n9. Oceania\n10. Turkey\n11. Russia"
+            "5. Korea\n6. Latin America North\n7. Latin America South\n8. " + 
+            "North America\n9. Oceania\n10. Turkey\n11. Russia"
         print "\nEnter a region #: "
         region = CLI.get_input
         API.set_region(region)

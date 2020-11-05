@@ -6,14 +6,14 @@ class API
         summoner = CLI.set_summoner
 
         url = "https://#{@@region}.api.riotgames.com/lol/summoner/v4/summoners"+
-        "/by-name/#{summoner}?api_key=#{ENV['API_KEY']}"
+            "/by-name/#{summoner}?api_key=#{ENV['API_KEY']}"
         
         response = JSON.parse(Net::HTTP.get(URI(url)))
         summoner_valid?(response)
         accountID = response['accountId']
 
         url = "https://#{@@region}.api.riotgames.com/lol/match/v4/matchlists/"+
-        "by-account/#{accountID}?api_key=#{ENV['API_KEY']}"
+            "by-account/#{accountID}?api_key=#{ENV['API_KEY']}"
 
         response = JSON.parse(Net::HTTP.get(URI(url)))
         Summoner.new(summoner.gsub('%20', ' '), response, accountID)
@@ -38,7 +38,7 @@ class API
 
     def self.get_match_details(match)
         url = "https://na1.api.riotgames.com/lol/match/v4/matches/" +
-        "#{match.matchid}?api_key=#{ENV['API_KEY']}"
+            "#{match.matchid}?api_key=#{ENV['API_KEY']}"
 
         response = JSON.parse(Net::HTTP.get(URI(url)))
         
